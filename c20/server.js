@@ -2,6 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
 const { name } = require('ejs')
+const { start } = require('repl')
 const sqlite3 = require('sqlite3').verbose()
 
 const db = new sqlite3.Database(path.join(__dirname, 'db', 'data.db'))
@@ -18,46 +19,78 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.get('/', (req, res) => { //create router read
-    const { name, height, weight, birthdate, married } = req.query
+    const { page = 1, name, height, weight, startdate, enddate, married, type_search} = req.query
+    
+    const limit = 3
+    const offset = (page - 1) * 3
+
     const queries = []
     const params = []
 
-    if(name) {
+    const count = []
+
+    if (name) {
         queries.push(`name like '%' || ? || '%'`)
         params.push(name)
+        count.push(name)
     }
 
-    if(height) {
+    if (height) {
         queries.push(`height = ?`)
         params.push(height)
+        count.push(height)
     }
 
-    if(weight) {
+    if (weight) {
         queries.push(`weight = ?`)
         params.push(weight)
+        count.push(weight)
     }
 
-    if(birthdate) {
-        queries.push(`birthdate = ?`)
-        params.push(birthdate)
-    }
+    if (startdate && enddate) {
+        queries.push(`birthdate between ? and ?`)
+        params.push(startdate, enddate)
+        count.push(startdate, enddate)
+    } else if(startdate) {
+        queries.push('birthdate >= ?')
+        params.push(startdate)
+        count.push(startdate)
+    } else if(enddate) {
+        queries.push('birthdate <= ?')
+        params.push(enddate)
+        count.push(enddate)
+    };
 
-    if(married) {
-        queries.push(`married like = ?`)
+    if (married) {
+        queries.push(`married = ?`)
         params.push(married)
+        count.push(married)
     }
 
+
+    let sqlCount = 'SELECT COUNT (*) AS total FROM data'
     let sql = 'SELECT * FROM data'
-    if(queries.length > 0) {
-        sql += ` WHERE ${queries.join(' or ')}`
+    if (queries.length > 0) {
+        sql += ` WHERE ${queries.join(` ${type_search} `)}`
+        sqlCount += ` WHERE ${queries.join(` ${type_search} `)}`
+
     }
 
-    db.all(sql, params,(err, rows) => {
-        if (err) {
-            console.log(err)
-            res.send('Gagal dapat data')
-        }
-        res.render('list', { data: rows, query: req.query })
+    sql += ` limit ? offset ?`
+    params.push(limit, offset)
+
+    db.get(sqlCount, (err, data) => {
+
+        const total = data.total
+        const pages = Math.ceil(total / limit)
+
+        db.all(sql, params, (err, rows) => {
+            if (err) {
+                console.log(err)
+                res.send('Gagal dapat data')
+            }
+            res.render('list', { data: rows, query: req.query, pages, offset })
+        })
     })
 })
 
