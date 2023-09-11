@@ -51,10 +51,11 @@ tr:nth-child(even) {
 .container-add-sec {
   width: 1000px;
   height: 550px;
-  margin: 50px;
+  margin: 20px;
   background-color: whitesmoke;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  width: 70%;
 }
 
 h1 {
@@ -68,8 +69,10 @@ h1 {
   padding: 10px;
   display: flex;
   flex-direction: column;
-  height: 200px;
+  height: 500px;
 }
+
+
 
 .add-box {
   padding: 10px;

@@ -95,7 +95,7 @@ app.get('/', (req, res) => { //create router read
 })
 
 app.get('/add', (req, res) => {//create router add
-    res.render('add')
+    res.render('add', dataGet)
 })
 
 app.post('/add', (req, res) => {
