@@ -42,63 +42,115 @@ tr:nth-child(even) {
 
 /* ini add */
 .container-add {
-  background-color: green;
+  background-color: whitesmoke;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  box-shadow: 0px 0px 5px rgb(167, 167, 167);
+  border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-color: rgb(218, 214, 214);
 }
 
 .container-add-sec {
-  width: 1000px;
+  width: 100%;
   height: 550px;
-  margin: 20px;
-  background-color: whitesmoke;
-  justify-content: space-between;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  width: 70%;
+  flex-direction: column;
 }
 
 h1 {
-  padding: 10px;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.inline {
+  display: flex;
+  height: 50%;
+  align-items: baseline;
+  margin: 5px;
+}
+
+label {
+  width: 30%;
+}
+
+
+input {
+  width: 100%;
+  padding: 10px;
+  font-size: medium;
+  border-radius: 5px;
+  margin: 10px;
+  display: inline;
 }
 
 .add-container {
-  background-color: blanchedalmond;
+  background-color: white;
   margin: 10px;
   padding: 10px;
   display: flex;
   flex-direction: column;
   height: 500px;
+  width: 950px;
+  border-style: solid;
+  border-color: rgb(218, 214, 214);
 }
 
 
+.button-add {
+  width: 100%;
+  display: flex;
+  justify-content: left;
+}
+
+
+.add-container input,
+.add-container label {
+  display: inline-block;
+}
 
 .add-box {
   padding: 10px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  height: 50px;
+  margin-bottom: 10px;
+  height: 35px;
+  flex-direction: row;
+  width: 1000px;
+  justify-content: flex-end;
 }
 
 .add-submit {
   color: #ddd;
-  background-color: rgb(22, 189, 91);
+  background-color: #0d6efd;
   padding: 3px;
+  width: 120px;
   height: 40px;
   font-size: smaller;
   font-weight: bold;
+  border-radius: 10px;
+  margin: 10px;
 }
 
 .add-cancel {
-  color: #ddd;
-  background-color: rgb(68, 0, 255);
+  color: black;
+  background-color: #fcc511;
   display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
   font-size: 12px;
   padding: 3px;
+  width: 120px;
   height: 40px;
   font-weight: bold;
+  border-radius: 10px;
+  margin: 10px;
 }
