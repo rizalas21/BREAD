@@ -6,46 +6,14 @@ body {
   background-color: aliceblue;
 }
 
-/* ini list */
-
-.list-create {
-  text-decoration: none;
-  color: white;
-  background-color: rgb(48, 58, 196);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 3px;
-  height: 40px;
-  font-weight: 600;
-  margin-bottom: 20px;
-  margin: 10px;
-  font-size: 15px;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-  width: 100%;
-  border: 1px solid #ddd;
-}
-
-th,
-td {
-  text-align: left;
-  padding: 16px;
-}
-
-tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
 
 /* ini add */
 .container-add {
   background-color: whitesmoke;
   margin-left: auto;
-  margin-right: auto;
+  margin-right: auto; 
   width: 70%;
+  height: 480px;
   box-shadow: 0px 0px 5px rgb(167, 167, 167);
   border-radius: 5px;
   display: flex;
@@ -56,7 +24,7 @@ tr:nth-child(even) {
 
 .container-add-sec {
   width: 100%;
-  height: 550px;
+  height: 100%;
   margin: 10px;
   display: flex;
   justify-content: center;
@@ -74,15 +42,25 @@ h1 {
 
 .inline {
   display: flex;
-  height: 50%;
+  justify-content: center;
+  height: 70px;
   align-items: baseline;
-  margin: 5px;
+  margin: 0px;
+  padding: 0px;
 }
 
 label {
   width: 30%;
+  margin: 1%;
+  padding: 0px;
 }
 
+
+legend {
+  width: 200px;
+  margin: 1%;
+  padding: 0px;
+}
 
 input {
   width: 100%;
@@ -91,15 +69,15 @@ input {
   border-radius: 5px;
   margin: 10px;
   display: inline;
+
 }
 
 .add-container {
   background-color: white;
-  margin: 10px;
+  margin: 0px;
   padding: 10px;
   display: flex;
   flex-direction: column;
-  height: 500px;
   width: 950px;
   border-style: solid;
   border-color: rgb(218, 214, 214);
@@ -153,4 +131,33 @@ input {
   font-weight: bold;
   border-radius: 10px;
   margin: 10px;
+}
+
+.married1 {
+  width: fit-content;
+  flex-direction: column;
+  display: inline-flex;
+}
+
+.married-option {
+  display: inline-flex;
+  justify-content: baseline;
+  width: 500px;
+}
+
+.married-option label {
+  width: fit-content;
+  display: inline-flex;
+}
+
+.married-option input {
+  margin: 0px;
+  width: fit-content;
+  display: inline-flex;
+}
+
+.container-married {
+  display: inline-flex;
+  justify-content: flex-start;
+  width: 100%;
 }
