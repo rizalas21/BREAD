@@ -89,7 +89,7 @@ app.get('/', (req, res) => { //create router read
                 console.log(err)
                 res.send('Gagal dapat data')
             }
-            res.render('list', { data: rows, query: req.query, pages, offset })
+            res.render('list', { data: rows, query: req.query, pages, offset, page })
         })
     })
 })
