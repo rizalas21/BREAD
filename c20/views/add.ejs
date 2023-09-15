@@ -39,34 +39,35 @@
                     <% if(!dataGet.married) { %>
                         <div class="married1">
                             <div class="married-option">
-                                <input type="radio" name="married" id="true" value="1">
-                                <label for="true">Yes</label>
-                            </div>
-
-                            <div class="married-option">
                                 <input type="radio" name="married" id="false" value="0" required checked>
                                 <label for="false">Not Yet</label>
+                            </div>
+                            
+                            <div class="married-option">
+                                <input type="radio" name="married" id="true" value="1">
+                                <label for="true">Yes</label>
                             </div>
                         </div>
 
                         <% } else {%>
                             <div class="married1">
                                 <div class="married-option">
-                                    <input type="radio" name="married" id="true" value="1">
-                                    <label for="true"> Yes</label>
-                                </div>
-
-                                <div class="married-option">
                                     <input type="radio" name="married" id="false" value="0">
                                     <label for="false">Not Yet</label>
+                                </div>
+                                
+                                <div class="married-option">
+                                    <input type="radio" name="married" id="true" value="1">
+                                    <label for="true"> Yes</label>
                                 </div>
                             </div>
                             <% } %>
                 </div>
+                <div class="button-add">
+                    <button type="submit" class="add-submit">Save</button>&nbsp;<a class="add-cancel" href="/">Back</a>
+                </div>
             </form>
-            <div class="button-add">
-                <button type="submit" class="add-submit">Save</button>&nbsp;<a class="add-cancel" href="/">Back</a>
-            </div>
+            
         </div>
     </div>
 </body>

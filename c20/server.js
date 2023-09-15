@@ -74,9 +74,9 @@ app.get('/', (req, res) => { //create router read
         sql += ` WHERE ${queries.join(` ${type_search} `)}`
         sqlCount += ` WHERE ${queries.join(` ${type_search} `)}`
 
-    }
-
-    sql += ` limit ? offset ?`
+    } 
+    
+    sql += ` order by id desc limit ? offset ?`
     params.push(limit, offset)
 
     db.get(sqlCount, (err, data) => {
@@ -128,16 +128,17 @@ app.get('/delete/:index', (req, res) => {
     })
 })
 
+
 app.get('/edit/:index', (req, res) => {
     const index = req.params.index
     const item = db.get('SELECT * FROM data WHERE id = ?', [index], (err, rows) => {
         if (err) return res.send(err)
-        else res.render('edit', { item: rows })
+        else res.render('edit', {item: rows})
     })
 })
 
 app.post('/edit/:index', (req, res) => {
-    const dataBaru = []
+    const dataBaru = {}
     const index = req.params.index
     dataBaru[index] = {
         name: req.body.name,
