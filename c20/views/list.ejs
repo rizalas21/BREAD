@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> BREAD (Browse, Read, Edit, Add, Delete)</title>
+    <title> BREAD (Browse, Read, Edit, Add, Delete) </title>
     <link rel="stylesheet" href="/css/list.css">
     <script src="/js/util.js"></script>
 </head>
@@ -166,14 +166,17 @@
             <div class="container-button">
                 <a href="/add" class="add-list">Add</a>
                 <div class="pagination">
+                    <% if(page != 1) { %>
                     <a href="?page=<%= page - 1%>">&laquo;</a>
+                    <% } %>
                     <% for(let i=1; i <=pages; i++){%>
                         <a class="pagination<%= (page == i) ? ' active' : '' %>" href="/?page=<%= i %>">
                             <%= i %>
                         </a>
                         <% } %>
-
+                        <% if(page != pages) { %>
                             <a href="?page=<%= Number(page) + 1%>">&raquo;</a>
+                            <% } %>
                 </div>
 
             </div>
